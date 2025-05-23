@@ -47,6 +47,9 @@ Each question allows the user to choose a level (e.g., *Minimal*, *Mild*, *Moder
 4. The result is displayed on a speedometer-style dashboard with a category label (e.g., Moderate Anxiety).
 
 ---
+## GUI
+https://github.com/AbhiVish6386/Mindlytics/blob/dcab215d204291b17ba281e359fc8b4d0da7cfee/Picture1.png
+
 
 ## 🧪 Example API Interaction
 

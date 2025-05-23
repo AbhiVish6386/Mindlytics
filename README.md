@@ -52,23 +52,37 @@ Each question allows the user to choose a level (e.g., *Minimal*, *Mild*, *Moder
 
 
 
-## 🧪 Example API Interaction
+## 🚀 Configuration Steps
 
-```python
-# Sample Python code (requests) for sending data to Watson
-import requests
+Follow the steps below to get the Mindlytics prediction app up and running:
 
-payload = {
-  "input_data": [{
-    "fields": ["Q1", "Q2", "Q3", "Q4", "Q5"],
-    "values": [["Minimal", "Mild", "Moderate", "Minimal", "Mild"]]
-  }]
-}
+1. Deploy the Model on IBM Cloud  
+2. Login to IBM Watson Studio  
+3. Upload and deploy your SPSS Modeler `.str` file  
+4. After successful deployment, copy the **Public Endpoint URL**  
 
-response = requests.post(
-  "<YOUR_WATSON_MODEL_ENDPOINT>",
-  json=payload,
-  headers={"Authorization": "Bearer <YOUR_API_KEY>"}
-)
+5. Paste Endpoint in `app.py`  
+6. Open `app.py`  
+7. Replace the existing URL with your model's **Public Endpoint URL**  
 
-prediction = response.json()
+8. Generate API Token  
+9. Make sure your IBM Cloud API key is added in `token_gen.py`  
+10. Run `token_gen.py` to generate the token  
+11. This will automatically create a `.env` file containing the access token  
+
+12. Ensure `.env` File Path is Correct  
+13. The `.env` file must be created at the same path where your Flask app is running  
+14. Make sure the path in your code matches the actual location of `.env`, or else VS Code won’t be able to locate it, and the app will fail to authenticate
+
+## 🖥️ Run the App Locally
+
+Follow these steps to run the app on your local server:
+
+1. Start the Flask server by running the following command:
+   
+   Run app.py
+   
+ 3. Open your browser and go to:
+    http://127.0.0.1:5000
+    
+    Enter your input data, and the app will fetch predictions from IBM Watson and display them on the dashboard

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mindlytics Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+</head>
+
+<body>
+    <!--<div class="background" style="background-image: url('{{ url_for('static', filename= 'mindlytics-bg.png') }}');"></div>-->
+
+    <div class="background"></div>
+    <div class="main-wrapper">
+        <!-- Form Section -->
+        <div class="form-container">
+            <h1>Mindlytics Predictor</h1>
+            <form method="POST">
+                <label>1. Nervous, anxious, or on edge?</label>
+    <select name="q1" required>
+        <option value="0">Minimal</option>
+        <option value="1">Mild</option>
+        <option value="2">Moderate</option>
+        <option value="3">Severe</option>
+    </select>
+
+    <label>2. Unable to stop worrying?</label>
+    <select name="q2" required>
+        <option value="0">Minimal</option>
+        <option value="1">Mild</option>
+        <option value="2">Moderate</option>
+        <option value="3">Severe</option>
+    </select>
+
+    <label>3. Trouble relaxing?</label>
+    <select name="q3" required>
+        <option value="0">Minimal</option>
+        <option value="1">Mild</option>
+        <option value="2">Moderate</option>
+        <option value="3">Severe</option>
+    </select>
+
+    <label>4. So restless it’s hard to sit still?</label>
+    <select name="q4" required>
+        <option value="0">Minimal</option>
+        <option value="1">Mild</option>
+        <option value="2">Moderate</option>
+        <option value="3">Severe</option>
+    </select>
+
+    <label>5. Felt afraid something awful might happen?</label>
+    <select name="q5" required>
+        <option value="0">Minimal</option>
+        <option value="1">Mild</option>
+        <option value="2">Moderate</option>
+        <option value="3">Severe</option>
+    </select>
+
+    <button type="submit">Predict</button>
+            </form>
+        </div>
+
+        <!-- Result Section -->
+        {% if prediction %}
+        <div class="result-container">
+            <h2>Prediction: <span id="predValue">{{ prediction }}</span></h2>
+            <h3>Category: {{ category }}</h3>
+
+            <div class="speedometer">
+                <div class="dial">
+                    {% for i in range(0, 51, 5) %}
+                    {% set deg = (i / 50) * 360 -(i==50 and 15 or 0) %}
+                    <div class="tick" style="transform: rotate({{ deg }}deg);">  
+                        <span style="transform: rotate(-{{ deg }}deg);">{{ i }}</span>
+                    </div>
+                    {% endfor %}
+
+                    <div class="needle" id="needle"></div>
+                    <div class="center-pin"></div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+    <script>
+        const pred = parseFloat(document.getElementById("predValue")?.innerText);
+        if (!isNaN(pred)) {
+            const maxValue = 50;
+            const rotation = Math.min((pred / maxValue) * 360, 360);
+            //const rotation = (pred / maxValue) * 180;
+            const needle = document.getElementById("needle");
+            if (needle) {
+                needle.style.transform = `rotate(${rotation}deg)`;
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,4 +1,4 @@
-# 🧠 Mindlytics – Mental Health Prediction Using IBM Watson
+ # 🧠 Mindlytics – Mental Health Prediction Using IBM Watson
 
 **Mindlytics** is a web-based mental health prediction tool that uses a machine learning model trained in **SPSS Modeler 18.5** and deployed on **IBM Watson Studio**. The user fills out a questionnaire, and the application sends this data to Watson's public API endpoint. Based on the model's prediction, the user is shown their estimated mental health category in real-time.
 
@@ -48,7 +48,8 @@ Each question allows the user to choose a level (e.g., *Minimal*, *Mild*, *Moder
 
 ---
 ## GUI
-https://github.com/AbhiVish6386/Mindlytics/blob/dcab215d204291b17ba281e359fc8b4d0da7cfee/Picture1.png
+![Picture1](https://github.com/user-attachments/assets/a3f305e5-6a25-4043-9662-0f96628ecac4)
+
 
 
 ## 🧪 Example API Interaction
